@@ -27,14 +27,23 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+// Relevant URLs:
+// Changing Location Settings: https://developer.android.com/training/location/change-location-settings.html
+//
+// Google Play Services location API reference:
+// https://developers.google.com/android/reference/com/google/android/gms/location/package-summary
+//
+// LocationSettingsResult documentation:
+// https://developers.google.com/android/reference/com/google/android/gms/location/LocationSettingsResult
+
 public class CheckHighAccuracyLocationEnabled {
-    public static final String TAG = "LocationTestSettings";
+    private static final String TAG = "LocationTestSettings";
 
     public CheckHighAccuracyLocationEnabled(Context context) {
 
     }
 
-    static public boolean checkLocationPermission(Context context) {
+    public static boolean checkLocationPermission(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return PackageManager.PERMISSION_GRANTED ==
                     PermissionChecker.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
